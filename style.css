@@ -1,0 +1,21 @@
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    height: 100vh;
+}
+
+.image {
+    width: 70%;
+}
+
+.buttonStyle {
+    width: 40%;
+    height: 60px;
+    background-color: rgb(0, 132, 255);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
