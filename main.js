@@ -1,45 +1,70 @@
+const app = document.getElementById('app');
 
 
 
-
-const fetchData = async (id) => {
+const fetchData = async () => {
     try {
-        const URL = "https://api.mercadolibre.com/sites/MLA/search?category=MLA1055&limit=20";
+        const URL = "https://api.mercadolibre.com/sites/MLA/search?category=MLA1144&limit=32&code=TG-62942a0634d5360013a67a01-344761823&state=";
         const response = await fetch(URL);
         const data = await response.json();
         
-        console.log(data)
-        const image = document.getElementById('img1');
-        const image2 = document.getElementById('img2');
-        const image3 = document.getElementById('img3');
-        image.src = data.results[id + 1].thumbnail;
-        image2.src = data.results[id].thumbnail;
-        image3.src = data.results[id + 2].thumbnail;
-        
+        console.log(data.results);
+        crearHTML(data);
         
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
     
     
 }
 
-const valorRandom = () => {
-    const min = 0;
-    const max = 20;
+const crearHTML = (data) => {
+    data.results.map((item) => {
+        const createItem = document.createElement('article');
+        createItem.innerHTML = `
+        <article class="cardContainer">
+        <img src=${item.thumbnail} alt="">
+    <div class="cardContent">
+        <div>
+            <p>${item.title}'</p>
+            
+        </div>
+        <div class="d-flex justify-content-around">
+            <p>$<span>${item.price}</span></p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-heart-fill favorite" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" onclick="favoriteStyle()"/>
+</svg>
+        </div>
+    </div>
+    <button class="cardButton">Comprar</button>
     
-    const random = Math.round(Math.random() * (max - min));
-    console.log(random);
-    return random;
+</article>
+        `
+        
+        app.appendChild(createItem);
+    })
+    
 }
 
-fetchData(valorRandom())
 
-const reiniciar = () => {
-    location.reload()
+const favoriteStyle = () => {
+    const favorite = document.querySelector('.favorite')
+    favorite.classList.toggle("favoriteTrue")
 }
 
-const button = document.getElementById('button');
-button.onclick = reiniciar;
+
+const fetchFavorites = () => {
+    try {
+        const URL_FAVOURITES = "https://api.mercadolibre.com/sites/MLA/search?category=MLA1144&limit=32&code=TG-62942a0634d5360013a67a01-344761823&state=";
+        const res = fetch(URL_FAVOURITES)
+        const data = res.json()
+
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+fetchData()
 
 

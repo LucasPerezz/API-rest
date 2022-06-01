@@ -1,21 +1,103 @@
-section {
+*{
+    padding: 0;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&display=swap');
+
+#app {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     place-items: center;
     height: 100vh;
+    margin-top: 32px;
 }
 
 .image {
     width: 70%;
 }
 
-.buttonStyle {
+nav {
+    width: 100vw;
+    height: 8vh;
+    background-color: rgb(194, 0, 0);
+}
+
+.navbars {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: center;
+    height: 8vh;
+}
+
+.navbars li {
+    color: white;
+    list-style: none;
+    cursor: pointer;
+}
+
+.imageProduct {
     width: 40%;
-    height: 60px;
-    background-color: rgb(0, 132, 255);
+}
+
+
+
+/* TEST */
+
+.cardContainer {
+    width: 350px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    margin-bottom: 64px;
+}
+
+.cardContainer img {
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+.cardContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-left: 12px;
+}
+
+.cardContent div:nth-child(1) {
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    margin-top: 12px;
+}
+
+.cardContent div:nth-child(2) {
+    font-size: 18px;
+    font-family: 'Oswald', sans-serif;
+}
+
+
+.cardButton {
     border: none;
     border-radius: 8px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: rgb(194, 0, 0);
     color: white;
-    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    padding: 4px 2px;
+}
+
+.favorite {
+    color: black;
+    cursor: pointer;
+}
+
+.favoriteTrue {
+    color: red;
+    transition: all 400ms else;
     cursor: pointer;
 }
