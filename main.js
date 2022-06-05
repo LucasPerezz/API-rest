@@ -48,17 +48,19 @@ const crearHTML = (data) => {
 
 
 const favoriteStyle = () => {
-    const favorite = document.querySelector('.favorite')
+    const favorite = document.querySelectorAll('.favorite')
     favorite.classList.toggle("favoriteTrue")
+    console.log(favorite)
 }
 
 
-const fetchFavorites = () => {
+const fetchFavorites = async () => {
     try {
-        const URL_FAVOURITES = "https://api.mercadolibre.com/sites/MLA/search?category=MLA1144&limit=32&code=TG-62942a0634d5360013a67a01-344761823&state=";
-        const res = fetch(URL_FAVOURITES)
-        const data = res.json()
+        const URL_FAVOURITES = "https://api.mercadolibre.com/users/me/bookmarks";
+        const res = await fetch(URL_FAVOURITES)
+        const data = await res.json()
 
+        console.log(data)
 
     } catch (error) {
         console.log(error)
@@ -66,5 +68,6 @@ const fetchFavorites = () => {
 }
 
 fetchData()
+fetchFavorites()
 
 
